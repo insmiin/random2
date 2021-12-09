@@ -1,0 +1,48 @@
+class Calculator:
+    def __init__(self,inp):
+        self.total = inp
+
+    def add(self,inp):
+        self.total = self.total + inp
+        return self.total
+
+    def mul(self,inp):
+        self.total = self.total * inp
+        return self.total
+    def div(self,inp):
+        self.total = self.total /inp
+        return self.total
+    def sub(self,inp):
+        self.total = self.total - inp
+        return self.total
+
+
+def main():
+    valid = ['Add','Sub','Mul','Div','Exit']
+    op = ''
+    total = float(input('provide a number:'))
+    cal = Calculator(total)
+    while True:
+        op = input(f" {','.join(valid)}:")
+        if op == 'Exit':
+            break
+        elif op not in valid:
+            print('not valid operation')
+            continue
+
+        total = float(input('provide a number:'))
+        if op == 'Add':
+            total = cal.add(total)
+        elif op == 'Mul':
+            total = cal.mul(total)
+        elif op == 'Div':
+            total = cal.div(total)
+        elif op == 'Sub':
+            total = cal.sub(total)
+        print('total now is',total)
+
+
+    return total
+
+if __name__ == '__main__':
+    print('main total is:',main())
