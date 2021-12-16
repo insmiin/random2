@@ -1,0 +1,65 @@
+# get data from input.txt ,eg. '10522.0,2014-05-02 11:02:53,engagement,home_page,Japan,dell inspiron notebook,3.0'
+with open('C:/Users/miin/Desktop/input.txt','r') as ip:
+  content = ip.read().splitlines()
+  ip.close()
+
+# get 1 column data from input2.txt, eg. 'Indonesia'
+with open('C:/Users/miin/Desktop/input2.txt','r') as ip2:
+  content2 = ip2.read().splitlines()
+  ip2.close()
+  
+#function to sort third column from the last. i.e country_code
+def sort_func(line):
+  order = line.split(',')
+  return order[-3]
+
+#function to sort country in input2.txt
+content.sort(key=sort_func)
+content2.sort()
+print(content)
+
+
+#return the key(country_code) 
+def read_content(num):
+  return content[num].split(',')[-3]
+
+def read_content2(num1):
+  return content2[num1]
+
+
+
+with open('C:/Users/miin/Desktop/output.txt','w') as op1:
+  num = 0
+  num1 = 0
+  c1_key = read_content(num)
+  ctry = read_content2(num1)
+  while True:
+    
+    #if country record(content2) has no matching key in txn record(content), write it to the file
+    if ctry < c1_key:
+      if ctry != read_content(num-1):
+        op1.write(ctry + '\n')
+      if num1 < len(content2)-1:
+        num1 = num1 + 1
+        ctry = read_content2(num1)
+      else:
+        break
+        
+    #if country reord(content2) matchs key in txn record(content), or country rec(content2) greater than key in txn record(content)
+    else:
+      if num < len(content) -1:
+        num = num + 1
+        c1_key = read_content(num)
+      else:                     #if reach end of file/array in txn record(content)
+        if ctry != read_content(num):
+          op1.write(ctry + '\n')
+        while num1 < len(content2) -1:          
+          num1 = num1 + 1
+          ctry = read_content2(num1)
+          op1.write(ctry + '\n')
+        break
+
+op1.close()
+
+
+
