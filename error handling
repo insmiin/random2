@@ -1,0 +1,19 @@
+def divide(num1,num2):
+    num = num1/num2
+    return num
+
+students = [
+    {'name':'bob','grade':[1,2,3]},
+    {'name':'bbbb','grade':[1,2,3]},
+    {'name':'ccc','grade':[]}
+]
+try:
+    for student in students:
+        name = student['name']
+        grade = student['grade']
+        average = divide(sum(grade), len(grade))
+        print(f"{student['name']} average is {average}")
+# catch error for main processing & indicate which key/identifier errors out
+except Exception as e:
+    print('error is :' ,e, 'for student ',student )          
+    print('class is :', type(e), 'for student ',student)
