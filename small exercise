@@ -1,0 +1,23 @@
+#exercise 1: - to transform [1,2,3,5,4,10] into this array -> [1, 10, 2, 5, 3, 4]
+# 1) to understand to after-transform pattern
+#    seems like to divide the array into 2 part,after sorting
+#    first part to assign to odd positionn in same order [1, ,2, ,3,...
+#    2nd part to assign to even position from back  [ ,10, ,5, ,4....
+aa=[1, 2, 3, 5, 4, 10]
+a=sorted(aa)
+
+b=[0 for _ in range(len(a))]
+
+half_length = len(a)//2
+first = 0
+second = len(a)-1
+for i in range(len(a)):
+    print(i)
+    if i < half_length:
+        b[first] = a[i]
+        first = first + 2
+    else:
+        b[second] = a[i]
+        second = second - 2
+
+print(b)
