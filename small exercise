@@ -24,17 +24,18 @@ print(b)
 
 
 #exercise 2:find first and second largest elements
-a = [1,3,4,15,6,4,2,4,5,2,3,2]
+# have to consider all kind of input order, eg. 1st & 2nd in the list happened to big biggest & second biggest...etc...
+a = [20,20,20,10,10,-1,20,20,20,-1,9,10,9,6,8,7]
 
+big = a[0]
+sec_big = a[0]
 first = True
-largest,sec_largest = (0,0)
 for i in a:
-   if first:
-      largest = i
-      first = False
-   elif i > largest:
-      largest = i
-   elif i > sec_largest:
-      sec_largest = i
-print(largest)
-print(sec_largest)
+    if i > big:
+        if big > sec_big:
+            sec_big = big
+        big = i
+    elif i < sec_big and sec_big == big:
+        sec_big = i
+    elif i > sec_big:
+        sec_big = i
