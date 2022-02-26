@@ -26,7 +26,7 @@ print(b)
 #exercise 2:find first and second largest elements
 # have to consider all kind of input order, eg. 1st & 2nd in the list happened to big biggest & second biggest...etc...
 #or a =[20,10]  or a=[20,20]
-a = [20,20,20,10,10,-1,20,20,20,-1,9,10,9,6,8,7]   
+a = [20,20,20,10,10,-1,20,20,20,-1,10,9,9,6,8,7]
 
 big = a[0]
 sec_big = a[0]
@@ -38,5 +38,7 @@ for i in a:
         big = i
     elif i < sec_big and sec_big == big:
         sec_big = i
-    elif i > sec_big:
+    elif i > sec_big and i< big: # i<big is to cater for duplicate max# that occurs before and after 2ndMax# 20 10 20 
         sec_big = i
+print(big,sec_big)
+
