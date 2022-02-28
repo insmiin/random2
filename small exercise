@@ -23,6 +23,20 @@ for i in range(len(a)):
 print(b)
 
 
+#use append is faster than assignment(=）
+b=sorted([1, 2, 3, 5, 4, 10])
+len_b = len(b)//2
+b1=b[:len_b]
+b2=b[len_b:]
+b2.reverse()
+e=[]
+for i in range(len(b1)):
+   e.append(b1[i])
+   e.append(b2[i])
+print(e)
+
+
+
 #exercise 2:find first and second largest elements
 # have to consider all kind of input order, eg. 1st & 2nd in the list happened to big biggest & second biggest...etc...
 #or a =[20,10]  or a=[20,20]
